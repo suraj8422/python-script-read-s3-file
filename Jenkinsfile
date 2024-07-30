@@ -25,8 +25,7 @@ pipeline {
         when {
                 expression {
                     // Only execute if INSTALL_DONE is not set
-                    //return env.INSTALL_DONE == ''
-                    return !fileExists('/path/to/shared/statefile')
+                       return env.INSTALL_DONE == '' 
                 }
         }
         
@@ -41,15 +40,12 @@ pipeline {
             python3 -m pip install requests boto3
             '''
             // Mark installation as done
-            //env.INSTALL_DONE = 'done'
-            sh 'touch /path/to/shared/statefile'
+            env.INSTALL_DONE = 'done'
+              
          }
      }
   }
 
-
-
-        
         // stage('Setup Environment') {
         //     steps {
         //         script {
@@ -76,5 +72,6 @@ pipeline {
         //         }
         //     }
         // }
+        
     }
 }
