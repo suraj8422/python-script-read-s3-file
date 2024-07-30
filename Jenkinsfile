@@ -9,7 +9,7 @@ pipeline {
     environment {
         AWS_CREDENTIALS_ID = 'aws-credentials-id' // Replace with your AWS credentials ID in Jenkins
         AWS_REGION = 'us-east-1' // Replace with your desired AWS region
-         INSTALL_DONE = '' // Initialize the variable
+        INSTALL_DONE = '' // Initialize the variable
     }
 
     stages {
@@ -25,7 +25,8 @@ pipeline {
         when {
                 expression {
                     // Only execute if INSTALL_DONE is not set
-                    return env.INSTALL_DONE == ''
+                    //return env.INSTALL_DONE == ''
+                    return !fileExists('/path/to/shared/statefile')
                 }
         }
         
@@ -40,7 +41,8 @@ pipeline {
             python3 -m pip install requests boto3
             '''
             // Mark installation as done
-            env.INSTALL_DONE = 'done'
+            //env.INSTALL_DONE = 'done'
+            sh 'touch /path/to/shared/statefile'
          }
      }
   }
