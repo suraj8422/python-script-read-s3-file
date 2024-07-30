@@ -19,17 +19,18 @@ pipeline {
             }
         }
 
-        stage('Setup Environment') {
-          steps {
-                script {
-                // Install dependencies globally (requires appropriate permissions)
-                    sh '''
-                    pip install --upgrade pip
-                    pip install requests boto3
-                    '''
-                }
-            }
-        }
+    stage('Setup Environment') {
+      steps {
+          script {
+            // Upgrade pip and install dependencies
+            sh '''
+            python3 -m pip install --upgrade pip
+            python3 -m pip install requests boto3
+            '''
+         }
+     }
+  }
+
 
 
         
