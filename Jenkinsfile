@@ -3,7 +3,7 @@ pipeline {
 
     triggers {
         // cron('0 0 * * *') // Runs the job every day at midnight
-        cron('*/5 * * * *') // Every 5 minutes
+        cron('*/10 * * * *') // Every 5 minutes
     }
 
     environment {
