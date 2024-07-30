@@ -3,7 +3,7 @@ pipeline {
 
     triggers {
         // cron('0 0 * * *') // Runs the job every day at midnight
-        cron('*/10 * * * *') // Every 5 minutes
+        cron('*/10 * * * *') // Every 10 minutes
     }
 
     environment {
@@ -21,7 +21,6 @@ pipeline {
         }
 
     stage('Setup Environment') {
-        
       steps {
           script {
             // Upgrade pip and install dependencies
@@ -34,19 +33,6 @@ pipeline {
          }
      }
   }
-
-        // stage('Setup Environment') {
-        //     steps {
-        //         script {
-        //             // Setup Python virtual environment and install dependencies
-        //             sh '''
-        //             python3 -m venv venv
-        //             source venv/bin/activate
-        //             pip install requests boto3
-        //             '''
-        //         }
-        //     }
-        // }
 
         // stage('Run Script with AWS Credentials') {
         //     steps {
