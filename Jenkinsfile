@@ -47,7 +47,7 @@ pipeline {
 
               def setupFile = 'install_done.txt'
               def setupDone = fileExists(setupFile)
-                echo '${setupDone}'
+                echo "Setup done: ${setupDone}"
                 if (!setupDone) {
                         // Upgrade pip and install dependencies
                         sh '''
