@@ -10,7 +10,7 @@ pipeline {
         AWS_CREDENTIALS_ID = 'aws-credentials-id' // Replace with your AWS credentials ID in Jenkins
         AWS_REGION = 'us-east-1' // Replace with your desired AWS region
         INSTALL_DONE = '' // Initialize the variable
-        IS_INSTALLATION_DONE = false
+        IS_INSTALLATION_DONE = true
     }
 
     stages {
@@ -45,7 +45,7 @@ pipeline {
             // // Mark installation as done
             // //env.INSTALL_DONE = 'done'
 
-              if (!env.IS_INSTALLATION_DONE) {
+              if (env.IS_INSTALLATION_DONE) {
                         // Upgrade pip and install dependencies
                         sh '''
                         python3 --version
@@ -55,7 +55,7 @@ pipeline {
                         python3 -m pip install requests boto3
                         '''
                     echo 'Environment setup going.'
-                   env.IS_INSTALLATION_DONE = true
+                   env.IS_INSTALLATION_DONE = false
                     } else {
                         echo 'Environment setup already done.'
                     }
