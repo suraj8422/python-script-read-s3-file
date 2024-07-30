@@ -32,19 +32,19 @@ pipeline {
             }
         }
 
-        stage('Run Script with AWS Credentials') {
-            steps {
-                withAWS(credentials: "${AWS_CREDENTIALS_ID}", region: "${AWS_REGION}") {
-                    script {
-                        // Run the Python script with AWS credentials
-                        sh '''
-                        source venv/bin/activate
-                        python my_script.py
-                        '''
-                    }
-                }
-            }
-        }
+        // stage('Run Script with AWS Credentials') {
+        //     steps {
+        //         withAWS(credentials: "${AWS_CREDENTIALS_ID}", region: "${AWS_REGION}") {
+        //             script {
+        //                 // Run the Python script with AWS credentials
+        //                 sh '''
+        //                 source venv/bin/activate
+        //                 python my_script.py
+        //                 '''
+        //             }
+        //         }
+        //     }
+        // }
     }
 
     post {
