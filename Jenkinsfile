@@ -58,7 +58,8 @@ pipeline {
                         python3 -m pip install requests boto3
                         '''
                         // Mark installation as done
-                        writeFile file: setupFile, text: 'done'
+                        //writeFile file: setupFile, text: 'done'
+                        sh "echo 'done' > ${setupFile}"
                        echo 'Installing setup.'
                     } else {
                         echo 'Environment setup already done.'
