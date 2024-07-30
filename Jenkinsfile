@@ -20,17 +20,31 @@ pipeline {
         }
 
         stage('Setup Environment') {
-            steps {
+          steps {
                 script {
-                    // Setup Python virtual environment and install dependencies
+                // Install dependencies globally (requires appropriate permissions)
                     sh '''
-                    python3 -m venv venv
-                    source venv/bin/activate
+                    pip install --upgrade pip
                     pip install requests boto3
                     '''
                 }
             }
         }
+
+
+        
+        // stage('Setup Environment') {
+        //     steps {
+        //         script {
+        //             // Setup Python virtual environment and install dependencies
+        //             sh '''
+        //             python3 -m venv venv
+        //             source venv/bin/activate
+        //             pip install requests boto3
+        //             '''
+        //         }
+        //     }
+        // }
 
         // stage('Run Script with AWS Credentials') {
         //     steps {
