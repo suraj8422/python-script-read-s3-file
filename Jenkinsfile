@@ -61,22 +61,4 @@ pipeline {
         //     }
         // }
     }
-
-    post {
-        always {
-            script {
-                // Clean up: Deactivate virtual environment and remove it
-                sh '''
-                deactivate || true
-                rm -rf venv
-                '''
-            }
-        }
-        failure {
-            echo 'Pipeline failed!'
-        }
-        success {
-            echo 'Pipeline succeeded!'
-        }
-    }
 }
