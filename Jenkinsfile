@@ -25,7 +25,7 @@ pipeline {
             // Upgrade pip and install dependencies
             sh '''
             python3 -m pip install --upgrade pip
-            python3 -m pip install requests boto3
+            pip install requests boto3
             '''
          }
      }
