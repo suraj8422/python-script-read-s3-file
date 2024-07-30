@@ -24,7 +24,7 @@ pipeline {
         
       steps {
           script {
-            Upgrade pip and install dependencies
+            // Upgrade pip and install dependencies
             sh '''
             python3 --version
             which python3
